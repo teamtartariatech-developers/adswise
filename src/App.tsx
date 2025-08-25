@@ -470,7 +470,8 @@ function App() {
           </div>
         </div>
       </section>
-                <ContactForm />
+      <br />
+      <ContactForm /><br />
       {/* Contact Section
       <section id="contact" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -533,7 +534,7 @@ function App() {
             <div className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-4">
               Adswise Marketing
             </div>
-            <a href="https://github.com/teamtartariatech-developers/adswise"> Github</a>
+            
             <p className="text-gray-400 mb-8">Psychology-driven branding and AI-powered marketing strategies.</p>
             <div className="border-t border-gray-800 pt-8">
               <p className="text-gray-500">&copy; 2025 Adswise Marketing. All rights reserved.</p>

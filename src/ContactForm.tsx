@@ -124,15 +124,7 @@ const ContactForm: React.FC = () => {
         </div>
       )}
 
-      <div className="mt-8 text-xs text-gray-400">
-        <h3 className="font-medium mb-2 text-gray-300">EmailJS Configuration:</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          <div>Service ID: <code className="bg-gray-800 px-1 rounded text-yellow-400">service_wnrgjg4</code></div>
-          <div>Template ID: <code className="bg-gray-800 px-1 rounded text-yellow-400">template_mzyt4bl</code></div>
-          <div>Public Key: <code className="bg-gray-800 px-1 rounded text-yellow-400">LBlYoE***</code></div>
-        </div>
-        <p className="mt-2 text-gray-500">Form fields: user_name, user_email, company, service, message</p>
-      </div>
+      
     </div>
   );
 };
