@@ -1,7 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useRef } from 'react';
 import { Menu, X, ArrowRight, Star, Users, Award, Zap, Eye, Palette, TrendingUp, ChevronLeft, ChevronRight, Check, Brain, Target, Smartphone, BarChart3 } from 'lucide-react';
 
+import ContactForm from './ContactForm.tsx';
+
 function App() {
+
+//   const form = useRef<HTMLFormElement | null>(null);
+
+
+// const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     if (!form.current) return;
+//     emailJs
+//     .sendForm(
+//       'service_wnrgjg4',
+//       'template_mzyt4bl' ,
+//       // form.current,
+//       e.currentTarget,
+//        'LBlYoEAIwb_JgiLgj')
+//     .then(
+//       (result) => {
+//         console.log(result.text);
+//         alert('Message sent successfully!');
+//         e.currentTarget.reset(); 
+//       },
+//       (error) => {
+//         console.log(error.text);
+//         alert('Something went wrong. Please try again.');
+//       }
+//     );
+// };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -67,6 +96,7 @@ function App() {
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -440,8 +470,8 @@ function App() {
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
+                <ContactForm />
+      {/* Contact Section
       <section id="contact" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -453,30 +483,33 @@ function App() {
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800">
-              <form className="grid md:grid-cols-2 gap-6">
+              <form ref={form} onSubmit={sendEmail} className="grid md:grid-cols-2 gap-6">
                 <input
+                name="user_name"
                   type="text"
                   placeholder="Your Name"
                   className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
                 />
                 <input
+                name="user_email" 
                   type="email"
                   placeholder="Your Email"
                   className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
                 />
                 <input
+                name="company"  
                   type="text"
                   placeholder="Company Name"
                   className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
                 />
-                <select className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300">
+                <select name="service" className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300">
                   <option value="">Select Service Interest</option>
                   <option value="brand-foundation">Brand Foundation & Identity</option>
                   <option value="website-design">Website Psychology & Design</option>
                   <option value="social-media">Social Media Growth & Monetisation</option>
                   <option value="brand-partner">Brand Partner Service</option>
                 </select>
-                <textarea
+                <textarea name="message"
                   placeholder="Tell us about your project and goals..."
                   rows={6}
                   className="md:col-span-2 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300 resize-none"
@@ -491,7 +524,7 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="py-12 bg-gray-900 border-t border-gray-800">
