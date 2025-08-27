@@ -97,6 +97,14 @@ function App() {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  // Smooth scroll function
+const scrollToContact = () => {
+  const contactSection = document.getElementById('contact');
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -105,7 +113,17 @@ function App() {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex justify-between items-center py-4">
       {/* Logo and Brand Name - Grouped Together */}
-      <div className="flex items-center space-x-3">
+      <button
+        onClick={() => {
+          const homeSection = document.getElementById('home');
+          if (homeSection) {
+            homeSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        className="flex items-center space-x-3 focus:outline-none"
+        aria-label="Go to Home"
+        type="button"
+      >
         <img
           src="/logo.png"
           alt="Adswise Marketing Logo"
@@ -114,8 +132,7 @@ function App() {
         <div className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
           Adswise Marketing
         </div>
-      </div>
-
+      </button>
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-8">
         <a href="#home" className="hover:text-yellow-400 transition-colors duration-300">Home</a>
@@ -159,20 +176,28 @@ function App() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Transform Your
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block">
-                Digital Presence
-              </span>
+
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-normal antialiased">
+            Transform Your
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block pb-[0.15em]">
+            Digital Presence
+          </span>
             </h1>
+
+
+            
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Psychology-driven branding and AI-powered marketing strategies that convert visitors into loyal customers and drive exponential growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transform transition-all duration-300 flex items-center justify-center gap-2">
+              <button  
+              onClick={scrollToContact}
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transform transition-all duration-300 flex items-center justify-center gap-2">
                 Get Custom Quote <ArrowRight size={20} />
               </button>
-              <button className="border border-gray-600 px-8 py-4 rounded-full font-semibold hover:border-yellow-400 hover:text-yellow-400 transition-colors duration-300">
+              <button 
+              onClick={scrollToContact}
+              className="border border-gray-600 px-8 py-4 rounded-full font-semibold hover:border-yellow-400 hover:text-yellow-400 transition-colors duration-300">
                 Become a Brand Partner
               </button>
             </div>
@@ -274,7 +299,8 @@ function App() {
                 </div>
               </div>
 
-              <button className="w-full border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-colors duration-300">
+              <button onClick={scrollToContact}
+               className="w-full border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-colors duration-300">
                 Get Custom Quote
               </button>
             </div>
@@ -324,7 +350,8 @@ function App() {
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transform transition-all duration-300">
+              <button onClick={scrollToContact} 
+              className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transform transition-all duration-300">
                 Become a Brand Partner
               </button>
             </div>
@@ -470,8 +497,12 @@ function App() {
           </div>
         </div>
       </section>
-      <br />
-      <ContactForm /><br />
+      {/* Contact Section */}
+    <section id='contact' className="py-20 bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ContactForm />
+      </div>
+    </section>
       {/* Contact Section
       <section id="contact" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

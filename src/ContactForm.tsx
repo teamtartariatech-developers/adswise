@@ -54,38 +54,51 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Brand?</h2>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+    <div className="max-w-4xl mx-auto bg-gray-900 p-4 sm:p-6 md:p-12 rounded-2xl border border-gray-800">
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Transform Your Brand?</h2>
+        <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
           Get in touch and let's discuss how our psychology-driven approach can accelerate your brand's growth and conversion rates.
         </p>
       </div>
       
-      <form ref={form} onSubmit={sendEmail} className="grid md:grid-cols-2 gap-6">
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="flex flex-col gap-4 sm:gap-6"
+        autoComplete="on"
+      >
         <input
           name="user_name"
           type="text"
           placeholder="Your Name"
           required
-          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
+          
+          autoComplete="name"
+          aria-label="Your Name"
+          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-base sm:text-lg focus:outline-none focus:border-yellow-400 transition-colors duration-300"
         />
         <input
-          name="user_email" 
+          name="user_email"
           type="email"
           placeholder="Your Email"
           required
-          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
+          autoComplete="email"
+          aria-label="Your Email"
+          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-base sm:text-lg focus:outline-none focus:border-yellow-400 transition-colors duration-300"
         />
         <input
-          name="company"  
+          name="company"
           type="text"
           placeholder="Company Name"
-          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
+          autoComplete="organization"
+          aria-label="Company Name"
+          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-base sm:text-lg focus:outline-none focus:border-yellow-400 transition-colors duration-300"
         />
-        <select 
-          name="service" 
-          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300"
+        <select
+          name="service"
+          aria-label="Service Interest"
+          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-base sm:text-lg focus:outline-none focus:border-yellow-400 transition-colors duration-300"
         >
           <option value="">Select Service Interest</option>
           <option value="brand-foundation">Brand Foundation & Identity</option>
@@ -93,24 +106,37 @@ const ContactForm: React.FC = () => {
           <option value="social-media">Social Media Growth & Monetisation</option>
           <option value="brand-partner">Brand Partner Service</option>
         </select>
-        <textarea 
+        <textarea
           name="message"
           placeholder="Tell us about your project and goals..."
-          rows={6}
+          rows={5}
           required
-          className="md:col-span-2 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-400 transition-colors duration-300 resize-none"
+          aria-label="Project Details"
+          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-base sm:text-lg focus:outline-none focus:border-yellow-400 transition-colors duration-300 resize-none"
         ></textarea>
 
         <button
           type="submit"
           disabled={isLoading}
-          className="md:col-span-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transform transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-full font-semibold text-base sm:text-lg hover:scale-105 transform transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
-          {isLoading ? 'Sending...' : 'Get Custom Quote'} 
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12,5 19,12 12,19"></polyline>
-          </svg>
+          {isLoading ? (
+            <>
+              <svg className="animate-spin mr-2" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" opacity="0.2"/>
+                <path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" strokeWidth="4"/>
+              </svg>
+              Sending...
+            </>
+          ) : (
+            <>
+              Get Custom Quote
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12,5 19,12 12,19"></polyline>
+              </svg>
+            </>
+          )}
         </button>
       </form>
 
@@ -123,8 +149,6 @@ const ContactForm: React.FC = () => {
           {status}
         </div>
       )}
-
-      
     </div>
   );
 };
