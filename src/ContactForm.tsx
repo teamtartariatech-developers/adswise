@@ -41,7 +41,7 @@ const ContactForm: React.FC = () => {
         (result) => {
           console.log(result.text);
           setStatus('Message sent successfully!');
-          e.currentTarget.reset();
+          
         },
         (error) => {
           console.log(error.text);
@@ -50,6 +50,7 @@ const ContactForm: React.FC = () => {
       )
       .finally(() => {
         setIsLoading(false);
+        form.current?.reset();
       });
   };
 
